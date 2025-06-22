@@ -18,8 +18,8 @@ const TabIcon = ({ focused, icon, title }: any) => {
         );
     } else {
         return (
-            <View className="mt-4 size-full rounded-full justify-center items-center">
-                <Image source={icon} tintColor="#a8b5d5" className="size-5 mt-2" />
+            <View className="mt-2 size-full rounded-full justify-center items-center">
+                <Image source={icon} tintColor="#a8b5d5" className="size-5 mt-4" />
             </View>
         );
     }
@@ -38,6 +38,9 @@ const _layout = () => {
                 },
                 tabBarStyle: {
                     backgroundColor: '#0f0d23',
+                    borderColor: '#0f0d23',
+                    borderStyle: 'solid',
+                    borderWidth: 0,
                     borderRadius: 50,
                     marginHorizontal: 20,
                     marginBottom:40,
@@ -68,4 +71,5 @@ const _layout = () => {
 
 export default _layout;
 
- // this  <Tabs>...</Tabs> creates automatically the bottom navbar with the routes
+// this  <Tabs>...</Tabs> creates automatically the bottom navbar with the routes
+// `focused` is a built-in prop from React Navigation — it's true when the tab is active, false otherwise.
