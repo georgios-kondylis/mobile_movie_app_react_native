@@ -54,13 +54,13 @@ const _layout = () => {
                        <TabIcon focused={focused} icon={require('../../assets/icons/home.png')} title={'home'} />
                     )}} />
 
-            <Tabs.Screen name="saved" options={{ tabBarIcon: ({ focused }) => (
-                         <TabIcon focused={focused} icon={require('../../assets/icons/save.png')} title={'saved'} />
-                     )}}/>
-
             <Tabs.Screen name="search" options={{ tabBarIcon: ({ focused }) => (
                     <TabIcon focused={focused} icon={require('../../assets/icons/search.png')} title={'search'} />
             )}} />
+
+            <Tabs.Screen name="saved" options={{ tabBarIcon: ({ focused }) => (
+                    <TabIcon focused={focused} icon={require('../../assets/icons/save.png')} title={'saved'} />
+                )}}/>
 
             <Tabs.Screen name="profile" options={{ tabBarIcon: ({ focused }) => (
                 <TabIcon focused={focused} icon={require('../../assets/icons/person.png')} title={'profile'} />

@@ -1,22 +1,60 @@
-import {Image, Text, View, ScrollView} from "react-native";
-import {Link} from "expo-router";
+import {Image, Text, View, ScrollView, ActivityIndicator, FlatList} from "react-native";
 import SearchBar from "@/components/SearchBar";
+import { useRouter } from "expo-router";
+import useFetch from "@/useFetch" // useFetch is a custom hook I created
+import { fetchMovies } from "@/services/api"; // this is a function I created to make API calls to TMDB is a movie database
 
 export default function Index() {
+    const router = useRouter();
+    const { data: movies, loading: moviesLoading, error: moviesError, } = useFetch(() => fetchMovies({query: ''}))
+
   return (
     <View className={`flex-1 bg-primary`}>
         <Image source={require('../../assets/images/bg.png')}
-               className="absolute z-0 w-full" />
+               className="absolute z-0 w-full"
+        />
 
         <ScrollView className={`flex-1 px-5`} showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ minHeight: '100%', paddingBottom: 10}}>
-            <Image source={require('../../assets/icons/logo.png')}
-                   className="w-12 h-10 mt-20 mb-5 mx-auto" />
-            <View className={`flex-1 mt-5`}>
-                <SearchBar />
-            </View>
-        </ScrollView>
+            <Image source={require('../../assets/icons/logo.png')} className="w-12 h-10 mt-20 mb-5 mx-auto" />
 
+            {moviesLoading? (
+                <ActivityIndicator size='large' color='#0000ff'
+                    className={`mt-10 self-center`}
+                /> ) : ( moviesError ?
+                    <Text>Error: {moviesError?.message}</Text> :
+                    <View className={`flex-1 mt-5`}>
+                        <SearchBar onPress={() => router.push('/search')}
+                            placeholder='Search for a movie'
+                        />
+                        <>
+                            <Text className={`text-white font-bold mt-5 mb-3`}>
+                                Latest Movies
+                            </Text>
+
+                            <FlatList
+                                data={movies} // array of movie objects
+                                renderItem={({ item }) => (
+                                    <Text className="text-white text-sm">{item.title}</Text>
+                                )}
+                                keyExtractor={(item) => item.id.toString()} // required for stable IDs
+                                numColumns={3}
+                                columnWrapperStyle={{
+                                    justifyContent: 'flex-start',
+                                    gap: 20,
+                                    paddingRight: 5,
+                                    marginBottom: 10
+                                }}
+                                className={`mt-2 pb-32`}
+                                scrollEnabled={false} // unnecessary since it is wrapped with a ScrollView
+                            />
+
+                        </>
+                    </View>
+                )
+            }
+
+        </ScrollView>
     </View>
   );
 }
