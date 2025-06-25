@@ -1,7 +1,7 @@
 import {Image, Text, View, ScrollView, ActivityIndicator, FlatList} from "react-native";
 import SearchBar from "@/components/SearchBar";
 import { useRouter } from "expo-router";
-import useFetch from "@/useFetch" // useFetch is a custom hook I created
+import useFetch from "@/services/useFetch"; // useFetch is a custom hook I created
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard"; // this is a function I created to make API calls to TMDB is a movie database
 
