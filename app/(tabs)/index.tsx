@@ -29,7 +29,7 @@ export default function Index() {
         <ScrollView className={`flex-1 px-5`} showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ minHeight: '100%', paddingBottom: 10}}>
              {/*LOGO*/}
-            <Image source={require('../../assets/icons/logo.png')} className=" w-[120px] h-[70px] mt-20 mb-5 mx-auto" />
+            <Image source={require('../../assets/icons/logo.png')} className=" w-[120px] h-[75px] mt-20 mb-5 mx-auto" />
 
             { moviesLoading || trendingLoading ? (
                     <ActivityIndicator size="large" color="#0000ff" className="mt-10 self-center" />
