@@ -5,7 +5,7 @@ import useFetch from "@/services/useFetch"; // useFetch is a custom hook I creat
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard"; // this is a function I created to make API calls to TMDB is a movie database
 import {getTrendingMovies} from "@/services/appwrite";
-import TrendingCard from "@/services/TrendingCard";
+import TrendingCard from "@/components/TrendingCard";
 
 export default function Index() {
     const router = useRouter();
@@ -29,7 +29,7 @@ export default function Index() {
         <ScrollView className={`flex-1 px-5`} showsVerticalScrollIndicator={false}
                     contentContainerStyle={{ minHeight: '100%', paddingBottom: 10}}>
              {/*LOGO*/}
-            <Image source={require('../../assets/icons/logo.png')} className="w-12 h-10 mt-20 mb-5 mx-auto" />
+            <Image source={require('../../assets/icons/logo.png')} className=" h-10 mt-20 mb-5 mx-auto" />
 
             { moviesLoading || trendingLoading ? (
                     <ActivityIndicator size="large" color="#0000ff" className="mt-10 self-center" />
