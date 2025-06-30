@@ -27,7 +27,7 @@ const MovieDetails = () => {
 
   return (
     <View className={`bg-primary flex-1`}>
-        <ScrollView contentContainerStyle={{paddingBottom: 80}}>
+        <ScrollView contentContainerStyle={{paddingBottom: 120}}>
             <View>
                 <Image source={{uri: `https://image.tmdb.org/t/p/w500${movie?.poster_path}`}}
                        className={`w-full h-[60vh] rounded-lg`} resizeMode={"cover"} />
@@ -93,8 +93,6 @@ const MovieDetails = () => {
             />
             <Text className="text-white font-semibold text-base">Go Back</Text>
         </TouchableOpacity>
-
-      <Text> {id}</Text>
     </View>
   );
 };
